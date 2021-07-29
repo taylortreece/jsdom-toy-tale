@@ -6,6 +6,8 @@ const toyCollectionDiv = document.querySelector('div#toy-collection')
 document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
+  renderAllToys()
+
   addBtn.addEventListener("click", () => {
     // hide & seek with the form
     addToy = !addToy;
@@ -38,7 +40,7 @@ function renderOneToy(toy) {
 function renderAllToys() {
   fetch('http://localhost:3000/toys')
     .then(response => {
-      // console.log(response)
+      console.log(response)
       return response.json()
     })
     .then(toyArr => toyArr.forEach(renderOneToy))
